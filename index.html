@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where Do I Belong?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="story-card" aria-live="polite">
+      <div class="top-line">
+        <p id="scene-count" class="scene-count">Scene 1 of 6</p>
+        <button id="restart-button" class="ghost-button" type="button">Restart</button>
+      </div>
+
+      <div class="progress-track" aria-label="Story progress">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+
+      <p class="kicker">Interactive story prototype</p>
+      <h1 id="scene-title">Where Do I Belong?</h1>
+      <p id="scene-text" class="scene-text"></p>
+
+      <div id="response-panel" class="response-panel hidden">
+        <p id="response-text"></p>
+      </div>
+
+      <div id="choices" class="choices"></div>
+
+      <section id="word-cloud" class="word-cloud hidden" aria-labelledby="word-cloud-title">
+        <h2 id="word-cloud-title">Identity words collected</h2>
+        <div id="word-list" class="word-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
