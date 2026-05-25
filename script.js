@@ -5,6 +5,7 @@
 const scenes = [
   {
     title: "Where Do I Belong?",
+    background: "opening.jpg",
     text: "What does home mean to you? Sasha Kim is a fictional Koryo Saram youth living in Kazakhstan. Sasha speaks mostly Russian, knows a few Korean words from family, and is curious about Korean culture. Today, Sasha notices that belonging can feel like a question, a memory, and a choice all at once.",
     choices: [
       {
@@ -16,6 +17,7 @@ const scenes = [
   },
   {
     title: "School Scene",
+    background: "school.jpg",
     text: 'At school, a classmate asks Sasha, "Are you Korean or Russian?" The question sounds simple, but Sasha feels many possible answers inside it.',
     choices: [
       {
@@ -42,6 +44,7 @@ const scenes = [
   },
   {
     title: "Family Memory Scene",
+    background: "home.jpg",
     text: "At home, Sasha's grandmother shares a gentle memory about migration, family history, and the ways relatives carried food, songs, names, and stories across places.",
     choices: [
       {
@@ -63,6 +66,7 @@ const scenes = [
   },
   {
     title: "Language Scene",
+    background: "dinner-table.jpg",
     text: "Later, Sasha hears Korean, Russian, and familiar family words mixed together around the dinner table. Some words are understood right away. Others feel like doors waiting to be opened.",
     choices: [
       {
@@ -84,6 +88,7 @@ const scenes = [
   },
   {
     title: "Korea Visit / Community Scene",
+    background: "korea.jpg",
     text: 'During a visit with a Korean community group, someone says, "You don\'t sound Korean." Sasha pauses. The comment feels small, but it touches something important.',
     choices: [
       {
@@ -93,8 +98,3 @@ const scenes = [
       },
       {
         label: "Explain your background.",
-        response: "Sasha shares that family history includes Kazakhstan, Korean roots, Russian language, and many everyday choices. One story can hold many places.",
-        words: ["history", "many places"]
-      },
-      {
-        label: "Say that identity can be complex.",
