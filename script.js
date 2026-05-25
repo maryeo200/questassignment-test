@@ -124,7 +124,7 @@ const scenes = [
     text: "Identity is not one simple answer. It can include family, memory, language, place, and choice.",
     ending: true,
     questions: [
-      “Identity can mean different things to different people.",
+      "Identity can mean different things to different people.",
       "What word feels most meaningful to you today?"
     ]
   }
