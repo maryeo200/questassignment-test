@@ -24,6 +24,11 @@ const scenes = [
         words: ["Korean", "family"]
       },
       {
+        label: "I'm Russian.",
+        response: "Sasha names the language and everyday culture that shape daily life. This answer is also part of Sasha's story, without erasing family history.",
+        words: ["Russian", "daily life"]
+      },
+      {
         label: "I'm both.",
         response: "Sasha makes room for more than one part of identity. Being both can be a complete answer, not a half answer.",
         words: ["both", "place"]
@@ -93,121 +98,3 @@ const scenes = [
       },
       {
         label: "Say that identity can be complex.",
-        response: "Sasha says identity can include language, family, memory, place, and change. The answer opens the conversation instead of closing it.",
-        words: ["complex", "choice"]
-      }
-    ]
-  },
-  {
-    title: "Ending Reflection",
-    text: "Identity is not one simple answer. It can include family, memory, language, place, and choice.",
-    ending: true,
-    questions: [
-      "What choice felt closest to your own experience?",
-      "How can storytelling help people understand identity?",
-      "What should facilitators be careful about when telling community stories?"
-    ]
-  }
-];
-
-let currentSceneIndex = 0;
-let selectedWords = [];
-let waitingForNextScene = false;
-
-const sceneCount = document.querySelector("#scene-count");
-const progressBar = document.querySelector("#progress-bar");
-const sceneTitle = document.querySelector("#scene-title");
-const sceneText = document.querySelector("#scene-text");
-const responsePanel = document.querySelector("#response-panel");
-const responseText = document.querySelector("#response-text");
-const choicesContainer = document.querySelector("#choices");
-const restartButton = document.querySelector("#restart-button");
-const wordCloud = document.querySelector("#word-cloud");
-const wordList = document.querySelector("#word-list");
-
-function renderScene() {
-  const scene = scenes[currentSceneIndex];
-  waitingForNextScene = false;
-
-  sceneCount.textContent = `Scene ${currentSceneIndex + 1} of ${scenes.length}`;
-  progressBar.style.width = `${((currentSceneIndex + 1) / scenes.length) * 100}%`;
-  sceneTitle.textContent = scene.title;
-  sceneText.textContent = scene.text;
-  responsePanel.classList.add("hidden");
-  responseText.textContent = "";
-  choicesContainer.innerHTML = "";
-
-  if (scene.ending) {
-    renderEnding(scene);
-    return;
-  }
-
-  wordCloud.classList.add("hidden");
-
-  scene.choices.forEach((choice) => {
-    const button = document.createElement("button");
-    button.className = "choice-button";
-    button.type = "button";
-    button.textContent = choice.label;
-    button.addEventListener("click", () => choosePath(choice));
-    choicesContainer.appendChild(button);
-  });
-}
-
-function choosePath(choice) {
-  if (waitingForNextScene) {
-    return;
-  }
-
-  waitingForNextScene = true;
-  selectedWords = selectedWords.concat(choice.words);
-  responseText.textContent = choice.response;
-  responsePanel.classList.remove("hidden");
-  choicesContainer.innerHTML = "";
-
-  const nextButton = document.createElement("button");
-  nextButton.className = "next-button";
-  nextButton.type = "button";
-  nextButton.textContent = currentSceneIndex === scenes.length - 2 ? "Go to reflection" : "Continue";
-  nextButton.addEventListener("click", () => {
-    currentSceneIndex += 1;
-    renderScene();
-  });
-
-  choicesContainer.appendChild(nextButton);
-}
-
-function renderEnding(scene) {
-  const uniqueWords = [...new Set(selectedWords)];
-
-  wordCloud.classList.remove("hidden");
-  wordList.innerHTML = "";
-
-  uniqueWords.forEach((word) => {
-    const pill = document.createElement("span");
-    pill.className = "word-pill";
-    pill.textContent = word;
-    wordList.appendChild(pill);
-  });
-
-  const questionList = document.createElement("ol");
-  questionList.className = "reflection-list";
-
-  scene.questions.forEach((question) => {
-    const item = document.createElement("li");
-    item.textContent = question;
-    questionList.appendChild(item);
-  });
-
-  choicesContainer.appendChild(questionList);
-}
-
-function restartGame() {
-  currentSceneIndex = 0;
-  selectedWords = [];
-  renderScene();
-}
-
-restartButton.addEventListener("click", restartGame);
-
-renderScene();
