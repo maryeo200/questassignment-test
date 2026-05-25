@@ -124,9 +124,8 @@ const scenes = [
     text: "Identity is not one simple answer. It can include family, memory, language, place, and choice.",
     ending: true,
     questions: [
-      "What choice felt closest to your own experience?",
-      "How can storytelling help people understand identity?",
-      "What should facilitators be careful about when telling community stories?"
+      “Identity can mean different things to different people.",
+      "What word feels most meaningful to you today?"
     ]
   }
 ];
